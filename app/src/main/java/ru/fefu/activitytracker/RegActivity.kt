@@ -39,7 +39,7 @@ class RegActivity : Activity() {
         val backButton : ImageView = findViewById(R.id.backButton)
         backButton.setOnClickListener {
             val intent = Intent(this@RegActivity, WelcomeActivity::class.java)
-            startActivity(intent)
+            finish()
         }
         val text = SpannableString("Нажимая на кнопку, вы соглашаетесь с политикой конфиденциальности и обработки персональных данных, а также принимаете пользовательское соглашение ")
         text.setSpan(MyClickableSpan(), 37, 66, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
