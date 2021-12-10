@@ -47,7 +47,7 @@ class Activity : AppCompatActivity() {
 
         else {
             supportFragmentManager.beginTransaction().apply {
-                add(R.id.fragment_container_view, notActiveFragment.newInstance(), notActiveFragment.tag)
+                add(R.id.fragment_container_view, fragmentToShowInfo.newInstance(), fragmentToShowInfo.tag)
                 commit()
             }
         }
