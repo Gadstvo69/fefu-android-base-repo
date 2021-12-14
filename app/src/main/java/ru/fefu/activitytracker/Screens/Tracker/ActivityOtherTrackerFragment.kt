@@ -1,6 +1,5 @@
-package ru.fefu.activitytracker
+package ru.fefu.activitytracker.Screens.Tracker
 
-import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -8,46 +7,32 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import ru.fefu.activitytracker.databinding.ActivityFragmentTrackingMyBinding
-import java.time.Duration
+import ru.fefu.activitytracker.Adapters.ActivityListAdapter
+import ru.fefu.activitytracker.Models.DateData
+import ru.fefu.activitytracker.Models.UserActivityData
+import ru.fefu.activitytracker.R
+import ru.fefu.activitytracker.databinding.ActivityFragmentTrackingOtherBinding
 import java.time.LocalDateTime
 
-class ActivityMyTrackerFragment : Fragment(R.layout.activity_fragment_tracking_my) {
-    private var _binding: ActivityFragmentTrackingMyBinding? = null
+class ActivityOtherTrackerFragment : Fragment(R.layout.activity_fragment_tracking_other){
+    private var _binding: ActivityFragmentTrackingOtherBinding? = null
     private val binding get() = _binding!!
-    private lateinit var items: MutableList<ActivityData>
+    private lateinit var items: MutableList<UserActivityData>
 
-
-    val activities = listOf<ActivityData>(
-        ActivityData(
-            "1000 м",
-            "Серфинг",
-            LocalDateTime.now(),
-            LocalDateTime.now(),
-        ),
-        ActivityData(
+    val activities = listOf<UserActivityData>(
+        UserActivityData(
             "1000 м",
             "Серфинг",
             LocalDateTime.of(2021, 10, 27, 11, 22),
             LocalDateTime.of(2021, 10, 28, 12, 40),
+            "@user1",
         ),
-        ActivityData(
-            "1000 м",
-            "Серфинг",
-            LocalDateTime.of(2021, 10, 27, 11, 22),
-            LocalDateTime.of(2021, 10, 28, 12, 40),
-        ),
-        ActivityData(
-            "1000 м",
-            "Серфинг",
-            LocalDateTime.of(2021, 10, 27, 11, 22),
-            LocalDateTime.of(2021, 10, 28, 12, 40),
-        ),
-        ActivityData(
+        UserActivityData(
             "14.32 км",
             "Велосипед",
             LocalDateTime.of(2021, 10, 27, 7, 40),
             LocalDateTime.of(2021, 10, 27, 10, 59),
+            "user2"
         )
     )
 
@@ -61,12 +46,12 @@ class ActivityMyTrackerFragment : Fragment(R.layout.activity_fragment_tracking_m
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = ActivityFragmentTrackingMyBinding.inflate(inflater, container, false)
+        _binding = ActivityFragmentTrackingOtherBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     val data_activities = mutableListOf<Any>()
-    private fun fill_date(activities: List<ActivityData>) {
+    private fun fill_date(activities: List<UserActivityData>) {
         val cur = LocalDateTime.now()
         var date = DateData("")
         for (activity in activities) {
@@ -80,7 +65,7 @@ class ActivityMyTrackerFragment : Fragment(R.layout.activity_fragment_tracking_m
             }
             else {
                 if (date.Date != map.get(activity.endDate.monthValue) + ' ' + activity.endDate.year.toString()  + "года") {
-                    date = DateData(map.get(activity.endDate.monthValue) + ' '+activity.endDate.year.toString() + "года")
+                    date = DateData(map.get(activity.endDate.monthValue) + activity.endDate.year.toString())
                     data_activities.add(date)
                 }
             }
@@ -89,7 +74,7 @@ class ActivityMyTrackerFragment : Fragment(R.layout.activity_fragment_tracking_m
         }
     }
 
-    private val adapter = ListAdapter(data_activities)
+    private val adapter = ActivityListAdapter(data_activities)
 
     private fun changeFragment(position: Int) {
         if (position in data_activities.indices) {
@@ -116,8 +101,6 @@ class ActivityMyTrackerFragment : Fragment(R.layout.activity_fragment_tracking_m
         recycleView.adapter = adapter
         adapter.setItemClickListener { changeFragment(it) }
     }
-
-
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
