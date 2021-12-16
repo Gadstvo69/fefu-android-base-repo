@@ -14,7 +14,7 @@ class LoginActivity : Activity() {
         val backButton : ImageView = findViewById(R.id.backButton)
         backButton.setOnClickListener {
             val intent = Intent(this@LoginActivity, WelcomeActivity::class.java)
-            finish()
+            startActivity(intent)
         }
     }
 }

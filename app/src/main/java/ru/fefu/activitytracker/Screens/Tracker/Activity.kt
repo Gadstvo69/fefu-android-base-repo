@@ -1,10 +1,9 @@
-package ru.fefu.activitytracker.Screens.Tracker
+package ru.fefu.activitytracker
 
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import ru.fefu.activitytracker.R
 import ru.fefu.activitytracker.Screens.Tracker.ActivityTabs
 import ru.fefu.activitytracker.Screens.Tracker.NewActivityFragment
 import ru.fefu.activitytracker.Screens.Tracker.ProfileFragment

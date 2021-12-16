@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import ru.fefu.activitytracker.databinding.ActivityFragmentTrackingMyBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ru.fefu.activitytracker.Adapters.ActivityListAdapter
 import ru.fefu.activitytracker.Models.ActivityData
 import ru.fefu.activitytracker.Models.DateData
 import ru.fefu.activitytracker.R
+import ru.fefu.activitytracker.databinding.ActivityFragmentTrackingMyBinding
 import java.time.LocalDateTime
 
 class ActivityMyTrackerFragment : Fragment(R.layout.activity_fragment_tracking_my) {
@@ -101,7 +101,7 @@ class ActivityMyTrackerFragment : Fragment(R.layout.activity_fragment_tracking_m
                 manager.fragments.forEach(::hide)
                 add (
                     R.id.activity_fragment_container,
-                    MyActivityInfo.newInstance(),
+                    MyActivityInfo.newInstance(data_activities[position] as ActivityData),
                     MyActivityInfo.tag,
                 )
                 addToBackStack(null)
