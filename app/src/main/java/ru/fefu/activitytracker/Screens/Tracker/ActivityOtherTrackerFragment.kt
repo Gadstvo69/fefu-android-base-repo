@@ -14,7 +14,7 @@ import ru.fefu.activitytracker.R
 import ru.fefu.activitytracker.databinding.ActivityFragmentTrackingOtherBinding
 import java.time.LocalDateTime
 
-class ActivityOtherTrackerFragment : Fragment(R.layout.activity_fragment_tracking_other){
+class ActivityOtherTrackerFragment : Fragment(R.layout.activity_fragment_tracking_other) {
     private var _binding: ActivityFragmentTrackingOtherBinding? = null
     private val binding get() = _binding!!
     private lateinit var items: MutableList<UserActivityData>
