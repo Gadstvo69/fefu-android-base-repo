@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".activitytracking.activity.ActivityMyDetailsFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/activity_my_details_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:navigationIcon="@drawable/ic_back"
+        app:title="Велосипед"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:menu="@menu/activity_details_toolbar_menu">
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/distance_activity_my_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif-medium"
+        android:paddingStart="32sp"
+        android:paddingEnd="32sp"
+        android:layout_marginTop="24dp"
+        android:text="@string/distance_string"
+        app:layout_constraintTop_toBottomOf="@id/activity_my_details_toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/date_activity_my_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif-medium"
+        android:paddingStart="32sp"
+        android:paddingEnd="32sp"
+        android:layout_marginTop="4dp"
+        android:text="@string/date_string"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/distance_activity_my_details" />
+
+    <TextView
+        android:id="@+id/time_activity_my_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif-medium"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/time_string"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/date_activity_my_details" />
+
+    <TextView
+        android:id="@+id/start_activity_my_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif-medium"
+        android:paddingStart="32dp"
+        android:paddingEnd="4dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/start_string"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/time_activity_my_details" />
+
+    <TextView
+        android:id="@+id/start_time_activity_my_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif-medium"
+        android:paddingStart="4dp"
+        android:paddingEnd="16dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/start_time_string"
+        app:layout_constraintStart_toEndOf="@id/start_activity_my_details"
+        app:layout_constraintTop_toBottomOf="@id/time_activity_my_details" />
+
+    <TextView
+        android:id="@+id/line_activity_my_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:fontFamily="sans-serif-medium"
+        android:layout_marginTop="4dp"
+        android:text="@string/vertical_line_string"
+        app:layout_constraintStart_toEndOf="@id/start_time_activity_my_details"
+        app:layout_constraintTop_toBottomOf="@id/time_activity_my_details" />
+
+    <TextView
+        android:id="@+id/end_activity_my_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:fontFamily="sans-serif-medium"
+        android:paddingStart="16dp"
+        android:paddingEnd="4dp"
+        android:layout_marginTop="4dp"
+        android:text="@string/stop_string"
+        app:layout_constraintStart_toEndOf="@id/line_activity_my_details"
+        app:layout_constraintTop_toBottomOf="@id/time_activity_my_details" />
+
+    <TextView
+        android:id="@+id/end_time_activity_my_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:paddingStart="4dp"
+        android:paddingEnd="16dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/stop_time_string"
+        app:layout_constraintStart_toEndOf="@id/end_activity_my_details"
+        app:layout_constraintTop_toBottomOf="@id/time_activity_my_details" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/comment_activity_my"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginTop="24dp"
+        android:hint="@string/comment_string"
+        app:layout_constraintTop_toBottomOf="@+id/start_activity_my_details"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/comment_activity_my_edit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

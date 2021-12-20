@@ -1,8 +1,58 @@
 <resources>
     <string name="app_name">Activity Tracker</string>
-    <string name="slogan">Пожалуй лучший \n фитнес трекер в ДВФУ</string>
-    <string name="created">Созданный студентами 2-ого курса</string>
-    <string name="confirm">Нажимая на кнопку, вы соглашаетесь с политикой конфиденциальности и обработки персональных данных, а также принимаете пользовательское соглашение </string>
-    <string name="menu_activity_tracker">Активность</string>
-    <string name="menu_profile">Профиль</string>
+    <string name="welcome">welcome</string>
+    <string name="welcome_header">Пожалуй лучший фитнес трекер в ДВФУ</string>
+    <string name="welcome_subtext">Созданный студентами 2-ого курса</string>
+    <string name="welcome_registration">Зарегистрироваться</string>
+    <string name="welcome_login">Уже есть аккаунт?</string>
+    <string name="registration">registration</string>
+    <string name="registration_header">Регистрация</string>
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="registration_repeat_password">Повторите пароль</string>
+    <string name="registration_name">Имя или никнейм</string>
+    <string name="registration_sex">Пол</string>
+    <string name="registration_continue">Продолжить</string>
+    <string name="registration_agreement">Нажимая на кнопку, вы соглашаетесь с <a href="http://google.com/">политикой
+        конфиденциальности</a> и обработкой персональных данных, а также принимаете
+        <a href="http://google.com/">пользовательское соглашение</a></string>
+    <string name="description_login">login</string>
+    <string name="login_header">Вход</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="activity">Активность</string>
+    <string name="profile">Профиль</string>
+    <string name="my_activity">Моя активность</string>
+    <string name="users_activity">Активность пользователей</string>
+    <string name="delete_string">Удалить</string>
+    <string name="share_string">Поделиться</string>
+    <string name="comment_string">Комментарий</string>
+    <string name="user_comment_string">Я бежал очень сильно, ты так не сможешь</string>
+    <string name="distance_string">14.32 км</string>
+    <string name="date_string">14 часов назад</string>
+    <string name="time_string">1 час 42 минуты</string>
+    <string name="start_string">Старт</string>
+    <string name="start_time_string">14:49</string>
+    <string name="vertical_line_string">|</string>
+    <string name="stop_string">Финиш</string>
+    <string name="stop_time_string">16:31</string>
+    <string name="user_name_string">\@van_darkholme</string>
+    <string name="save_string">Сохранить</string>
+    <string name="nick_string">Имя или никнейм</string>
+    <string name="change_password">Изменить пароль</string>
+    <string name="sign_out">Выйти</string>
+    <string name="old_password">Старый пароль</string>
+    <string name="new_password">Новый пароль</string>
+    <string name="repeat_password">Повторите пароль</string>
+    <string name="accept">Принять</string>
+    <string name="new_train">Новая тренировка</string>
+    <string name="map">Карта</string>
+    <string name="start_train_layout">Погнали? :)</string>
+    <string name="start_train">Начать</string>
+    <string name="bicycle">Велосипед</string>
+    <string name="train_time">00:01:46</string>
+    <string-array name="sex">
+        <item>Мужской</item>
+        <item>Женский</item>
+        <item>Другое</item>
+    </string-array>
 </resources>

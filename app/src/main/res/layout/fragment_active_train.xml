@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/train_shape"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/train_type"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/bicycle"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/train_distance"/>
+
+    <TextView
+        android:id="@+id/train_distance"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/distance_string"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="24sp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/train_time"
+        app:layout_constraintTop_toBottomOf="@id/train_type"/>
+
+    <TextView
+        android:id="@+id/train_time"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/train_time"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="24sp"
+        android:gravity="end"
+
+        app:layout_constraintStart_toEndOf="@id/train_distance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/train_type"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/pause_train_button"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        android:contentDescription="@string/new_train"
+        android:src="@drawable/ic_pause"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:backgroundTint="#E7DDFF"
+        app:fabCustomSize="55dp"
+        app:layout_constraintEnd_toStartOf="@id/stop_train_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/train_distance"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:maxImageSize="16dp"
+        app:rippleColor="@color/white"
+        app:tint="@color/purple_500"
+        app:useCompatPadding="false" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/stop_train_button"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        android:src="@drawable/ic_start"
+        android:contentDescription="@string/new_train"
+        app:fabCustomSize="57dp"
+        app:backgroundTint="@color/purple_500"
+        app:layout_constraintTop_toBottomOf="@id/train_distance"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/pause_train_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:maxImageSize="22dp"
+        app:rippleColor="@color/white"
+        app:tint="@color/white"
+        app:useCompatPadding="false"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
