@@ -9,50 +9,21 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ru.fefu.activitytracker.Adapters.ActivityListAdapter
+import ru.fefu.activitytracker.App
+import ru.fefu.activitytracker.Enums.ActivitiesEnum
 import ru.fefu.activitytracker.Models.ActivityData
 import ru.fefu.activitytracker.Models.DateData
 import ru.fefu.activitytracker.R
 import ru.fefu.activitytracker.databinding.ActivityFragmentTrackingMyBinding
+import java.time.Instant
 import java.time.LocalDateTime
+import java.time.ZoneId
 
 class ActivityMyTrackerFragment : Fragment(R.layout.activity_fragment_tracking_my) {
     private var _binding: ActivityFragmentTrackingMyBinding? = null
     private val binding get() = _binding!!
-    private lateinit var items: MutableList<ActivityData>
-
-
-    val activities = listOf<ActivityData>(
-        ActivityData(
-            "1000 м",
-            "Серфинг",
-            LocalDateTime.now(),
-            LocalDateTime.now(),
-        ),
-        ActivityData(
-            "1000 м",
-            "Серфинг",
-            LocalDateTime.of(2021, 10, 27, 11, 22),
-            LocalDateTime.of(2021, 10, 28, 12, 40),
-        ),
-        ActivityData(
-            "1000 м",
-            "Серфинг",
-            LocalDateTime.of(2021, 10, 27, 11, 22),
-            LocalDateTime.of(2021, 10, 28, 12, 40),
-        ),
-        ActivityData(
-            "1000 м",
-            "Серфинг",
-            LocalDateTime.of(2021, 10, 27, 11, 22),
-            LocalDateTime.of(2021, 10, 28, 12, 40),
-        ),
-        ActivityData(
-            "14.32 км",
-            "Велосипед",
-            LocalDateTime.of(2021, 10, 27, 7, 40),
-            LocalDateTime.of(2021, 10, 27, 10, 59),
-        )
-    )
+    private val activities = mutableListOf<ActivityData>()
+    private val data_activities = mutableListOf<Any>()
 
     val map = mapOf(1 to "Январь", 2 to "Февраль", 3 to "Март",
         4 to "Апрель", 5 to "Май", 6 to "Июнь",
@@ -68,26 +39,24 @@ class ActivityMyTrackerFragment : Fragment(R.layout.activity_fragment_tracking_m
         return binding.root
     }
 
-    val data_activities = mutableListOf<Any>()
     private fun fill_date(activities: List<ActivityData>) {
         val cur = LocalDateTime.now()
         var date = DateData("")
         for (activity in activities) {
             if (cur.year == activity.endDate.year &&
                 cur.monthValue == activity.endDate.monthValue &&
-                    cur.dayOfMonth == activity.endDate.dayOfMonth) {
+                cur.dayOfMonth == activity.endDate.dayOfMonth) {
                 if (date.Date != "Сегодня") {
                     date = DateData("Сегодня")
                     data_activities.add(date)
                 }
             }
             else {
-                if (date.Date != map.get(activity.endDate.monthValue) + ' ' + activity.endDate.year.toString()  + "года") {
-                    date = DateData(map.get(activity.endDate.monthValue) + ' '+activity.endDate.year.toString() + "года")
+                if (date.Date != map.get(activity.endDate.monthValue) + ' ' + activity.endDate.year.toString()  + " года") {
+                    date = DateData(map.get(activity.endDate.monthValue) + ' '+activity.endDate.year.toString() + " года")
                     data_activities.add(date)
                 }
             }
-            Log.d("TAG", cur.hour.toString())
             data_activities.add(activity)
         }
     }
@@ -101,19 +70,32 @@ class ActivityMyTrackerFragment : Fragment(R.layout.activity_fragment_tracking_m
                 manager.fragments.forEach(::hide)
                 add (
                     R.id.activity_fragment_container,
-                    MyActivityInfo.newInstance(),
+                    MyActivityInfo.newInstance(data_activities[position] as ActivityData),
                     MyActivityInfo.tag,
-                        )
+                )
                 addToBackStack(null)
                 commit()
-           }
+            }
         }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        fill_date(activities)
+        App.INSTANCE.db.activityDao().getAll().observe(viewLifecycleOwner) {
+            activities.clear()
+            data_activities.clear()
+            for(activity in it) {
+                var startDate = LocalDateTime.ofInstant(Instant.ofEpochMilli(activity.dateStart), ZoneId.systemDefault())
+                var endDate = LocalDateTime.ofInstant(Instant.ofEpochMilli(activity.dateEnd), ZoneId.systemDefault())
+                var type = ActivitiesEnum.values()[activity.type].type
+                var distance = (1..20).random().toString() + " км"
+                activities.add(ActivityData(distance, type, startDate, endDate))
+            }
+            fill_date(activities)
+            adapter.notifyDataSetChanged()
+        }
+
         val recycleView = binding.recyclerView
         recycleView.layoutManager = LinearLayoutManager(requireContext())
         recycleView.adapter = adapter
