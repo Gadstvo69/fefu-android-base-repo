@@ -62,9 +62,8 @@ class NewActivityFragment: Fragment() {
                         adapter.selected,
                         startDate,
                         endDate,
-                        0.0,
-                        mutableListOf<Pair<Double, Double>>(),
-                        0
+                        123.0,
+                        131.0
                     )
                 )
 
